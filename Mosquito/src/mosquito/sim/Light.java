@@ -22,6 +22,7 @@ public class Light extends GameObject {
 		if(t > d)
 			throw new IllegalArgumentException("t can not be > d");
 	}
+	
 	public boolean isOn(int time)
 	{
 		if(forced_on)

@@ -120,5 +120,41 @@ public class MidpointPlayerG3 extends Player {
 		return Math.sqrt(Math.pow(wall.getY2() - wall.getY1(), 2.0) + Math.pow(wall.getX2() - wall.getX1(), 2.0));
 	
 	} // end wallLength method
+	
+	private Light pointToLight(Point p, int d, int s, int t){
+		
+		Light out = new Light(p.getX(), p.getY(), d, s, t);
+		
+		return out;
+		
+	}// end pointToLight method
+	
+	private Point nearestPoint(Point target, ArrayList<Point> mids){
+		
+		// starts arbitrarily high
+		double shortestDistance = 10000.0;
+		
+		// initially the first midpoint. 
+		int index = 0;
+		
+		// iterates over the set of midpoints, calculating distance between all of them
+		for(int i=0; i < mids.size(); i++){
+			
+			double dist = target.distance(mids.get(i));
+			
+			// checks to see if new shortest distance has been found
+			if(dist < shortestDistance){
+				
+				// updates nearest neighbor information
+				shortestDistance = dist;
+				index = i;
+				
+			}// end shortness check
+			
+		}// end shortest search
+		
+		return mids.get(index);
+		
+	}// end nearestPoint method
 
 }
